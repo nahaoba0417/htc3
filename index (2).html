@@ -1,0 +1,1110 @@
+<html lang="zh-CN"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>房树人测试 | 图片选择式心理分析</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4F46E5', // 主色调：深紫色，传达专业和神秘感
+                        secondary: '#10B981', // 辅助色：绿色，代表成长和生命力
+                        accent: '#F59E0B', // 强调色：琥珀色，增加活力
+                        neutral: '#F3F4F6',
+                        dark: '#1F2937'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .card-hover {
+                transition: all 0.3s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-5px);
+            }
+            .selected-border {
+                @apply border-2 border-primary ring-2 ring-primary/20;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800">
+    <!-- 导航栏 -->
+    <nav id="navbar" class="fixed w-full bg-white/90 backdrop-blur-sm z-50 transition-all duration-300 shadow-sm">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fa fa-picture-o text-primary text-2xl"></i>
+                <span class="text-xl font-bold text-dark">房树人测试</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#intro" class="text-gray-600 hover:text-primary transition-colors">测试介绍</a>
+                <a href="#test" class="text-gray-600 hover:text-primary transition-colors">开始测试</a>
+                <a href="#analysis" class="text-gray-600 hover:text-primary transition-colors">分析结果</a>
+                <a href="#faq" class="text-gray-600 hover:text-primary transition-colors">常见问题</a>
+            </div>
+            <button class="md:hidden text-gray-600 focus:outline-none" id="menu-toggle">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+        <!-- 移动端菜单 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+                <a href="#intro" class="py-2 text-gray-600 hover:text-primary transition-colors">测试介绍</a>
+                <a href="#test" class="py-2 text-gray-600 hover:text-primary transition-colors">开始测试</a>
+                <a href="#analysis" class="py-2 text-gray-600 hover:text-primary transition-colors">分析结果</a>
+                <a href="#faq" class="py-2 text-gray-600 hover:text-primary transition-colors">常见问题</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <header class="pt-24 pb-16 md:pt-32 md:pb-24 bg-gradient-to-br from-indigo-50 to-purple-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-dark leading-tight text-shadow mb-4">
+                        房树人测试<br>
+                        <span class="text-primary">探索你的内心世界</span>
+                    </h1>
+                    <p class="text-gray-600 text-lg mb-8 max-w-lg">
+                        从提供的图片中选择最能引起你共鸣的房子、树和人物，我们将为你解读这些选择背后的心理含义，揭示你的性格特质和情感状态。
+                    </p>
+                    <a href="#test" class="inline-block bg-primary hover:bg-primary/90 text-white font-medium px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+                        开始测试 <i class="fa fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                <div class="md:w-1/2 relative">
+                    <div class="relative z-10 bg-white p-4 rounded-xl shadow-2xl transform rotate-2 transition-transform hover:rotate-0 duration-500">
+                        <img src="https://picsum.photos/id/1048/600/400" alt="房树人测试示意图" class="rounded-lg w-full h-auto">
+                    </div>
+                    <div class="absolute top-10 -right-5 w-full h-full bg-primary/20 rounded-xl -z-10 transform -rotate-3"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 测试介绍 -->
+    <section id="intro" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-4">什么是房树人测试？</h2>
+                <div class="w-20 h-1 bg-primary mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-neutral rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-5">
+                        <i class="fa fa-home text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">房子</h3>
+                    <p class="text-gray-600">
+                        房子象征着你的家庭观念和安全感。你选择的房子类型、风格和状态，反映了你对家庭的感受和对安全的需求。
+                    </p>
+                </div>
+
+                <div class="bg-neutral rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
+                    <div class="w-14 h-14 bg-secondary/10 rounded-full flex items-center justify-center mb-5">
+                        <i class="fa fa-tree text-secondary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">树</h3>
+                    <p class="text-gray-600">
+                        树代表着你的成长历程和生命力。树的形态、大小和状态，揭示了你的成长经历、生命力和对未来的展望。
+                    </p>
+                </div>
+
+                <div class="bg-neutral rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
+                    <div class="w-14 h-14 bg-accent/10 rounded-full flex items-center justify-center mb-5">
+                        <i class="fa fa-user text-accent text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">人</h3>
+                    <p class="text-gray-600">
+                        人象征着你的自我形象和人际关系。你选择的人物姿态、表情和状态，反映了你的自我评价和与他人的相处模式。
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-16 bg-gradient-to-r from-primary/5 to-purple-50 rounded-2xl p-8 md:p-10">
+                <h3 class="text-2xl font-bold mb-6 text-dark">测试流程</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                            <span class="font-bold text-primary">1</span>
+                        </div>
+                        <h4 class="font-semibold mb-2">选择房子</h4>
+                        <p class="text-gray-600 text-sm">从提供的图片中，选择一个最能引起你共鸣的房子</p>
+                    </div>
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                            <span class="font-bold text-primary">2</span>
+                        </div>
+                        <h4 class="font-semibold mb-2">选择树木</h4>
+                        <p class="text-gray-600 text-sm">浏览树木图片，选择一个你最有感觉的树木形象</p>
+                    </div>
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                            <span class="font-bold text-primary">3</span>
+                        </div>
+                        <h4 class="font-semibold mb-2">获取分析</h4>
+                        <p class="text-gray-600 text-sm">完成选择后，系统将生成你的个性化心理分析报告</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 测试区域 -->
+    <section id="test" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-4">开始你的房树人测试</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto mb-6">
+                    请从下方每组图片中，选择一个最能引起你共鸣或感觉最舒适的图像。无需过度思考，凭直觉选择即可。
+                </p>
+                <div class="w-20 h-1 bg-primary mx-auto rounded-full"></div>
+            </div>
+
+            <!-- 测试步骤指示器 -->
+            <div class="mb-12">
+                <div class="flex items-center justify-between max-w-2xl mx-auto">
+                    <div class="flex flex-col items-center" id="step-indicator-1">
+                        <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center mb-2">
+                            <i class="fa fa-home"></i>
+                        </div>
+                        <span class="text-sm font-medium text-primary">选择房子</span>
+                    </div>
+                    <div class="flex-1 h-1 mx-4 bg-gray-200 relative">
+                        <div class="absolute top-0 left-0 h-full bg-primary transition-all duration-500" id="progress-1" style="width: 0%"></div>
+                    </div>
+                    <div class="flex flex-col items-center" id="step-indicator-2">
+                        <div class="w-10 h-10 rounded-full bg-gray-200 text-gray-500 flex items-center justify-center mb-2">
+                            <i class="fa fa-tree"></i>
+                        </div>
+                        <span class="text-sm font-medium text-gray-500">选择树木</span>
+                    </div>
+                    <div class="flex-1 h-1 mx-4 bg-gray-200 relative">
+                        <div class="absolute top-0 left-0 h-full bg-primary transition-all duration-500" id="progress-2" style="width: 0%"></div>
+                    </div>
+                    <div class="flex flex-col items-center" id="step-indicator-3">
+                        <div class="w-10 h-10 rounded-full bg-gray-200 text-gray-500 flex items-center justify-center mb-2">
+                            <i class="fa fa-user"></i>
+                        </div>
+                        <span class="text-sm font-medium text-gray-500">选择人物</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 测试内容区域 -->
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden mb-8">
+                <!-- 步骤1：选择房子 -->
+                <div id="step-1" class="test-step">
+                    <div class="p-6 border-b border-gray-100 bg-gray-50">
+                        <h3 class="text-xl font-semibold">第一步：选择房子</h3>
+                        <p class="text-gray-500 text-sm">请选择一个最能引起你共鸣的房子图像</p>
+                    </div>
+                    <div class="p-6 md:p-8">
+                        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <!-- 房子选项1 -->
+                            <div class="house-option card-hover rounded-xl overflow-hidden shadow-md border cursor-pointer" data-id="house1">
+                                <div class="relative">
+                                    <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/0247411e50ab48c790b14232f479171c~tplv-a9rns2rl98-image.image?rcl=202509281614460001E25FEF3DC7CD5E72&amp;rk3s=8e244e95&amp;rrcfp=2609e108&amp;x-expires=1759652090&amp;x-signature=8Sx4HSDbBjbbIAIg67pDWXWAFKA%3D" alt="现代风格的独立住宅，带有宽敞的窗户和整洁的庭院" class="w-full h-48 object-cover">
+                                    <div class="absolute top-3 right-3 w-6 h-6 rounded-full bg-white border-2 border-gray-300 flex items-center justify-center selected-marker opacity-0">
+                                        <i class="fa fa-check text-primary text-sm"></i>
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-medium mb-1">现代舒适住宅</h4>
+                                    <p class="text-gray-600 text-sm">现代风格的独立住宅，带有宽敞的窗户和整洁的庭院</p>
+                                </div>
+                            </div>
+                            
+                            <!-- 房子选项2 -->
+                            <div class="house-option card-hover rounded-xl overflow-hidden shadow-md border cursor-pointer" data-id="house2">
+                                <div class="relative">
+                                    <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/cfa3b3a65ecd443ea2cb1cfa35988144~tplv-a9rns2rl98-image.image?rcl=20250928161538061A2B9056811857BA60&amp;rk3s=8e244e95&amp;rrcfp=2609e108&amp;x-expires=1759652142&amp;x-signature=OQxPUc%2FqT2U%2F%2FoeiinzAGH2D%2BRY%3D" alt="传统风格的 cottage 小屋，带有烟囱和小花园" class="w-full h-48 object-cover">
+                                    <div class="absolute top-3 right-3 w-6 h-6 rounded-full bg-white border-2 border-gray-300 flex items-center justify-center selected-marker opacity-0">
+                                        <i class="fa fa-check text-primary text-sm"></i>
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-medium mb-1">传统温馨小屋</h4>
+                                    <p class="text-gray-600 text-sm">传统风格的 cottage 小屋，带有烟囱和小花园</p>
+                                </div>
+                            </div>
+                            
+                            <!-- 房子选项3 -->
+                            <div class="house-option card-hover rounded-xl overflow-hidden shadow-md border cursor-pointer" data-id="house3">
+                                <div class="relative">
+                                    <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/e550fb45f5fb4dc8bde1f306a3b7b834~tplv-a9rns2rl98-image.image?rcl=20250928161603EED31D5586959C56B748&amp;rk3s=8e244e95&amp;rrcfp=2609e108&amp;x-expires=1759652167&amp;x-signature=DkBAqcw5GYMsH2kJjnNECc5yu7o%3D" alt="宏伟的大型别墅，带有开阔的草坪和精致的装饰" class="w-full h-48 object-cover">
+                                    <div class="absolute top-3 right-3 w-6 h-6 rounded-full bg-white border-2 border-gray-300 flex items-center justify-center selected-marker opacity-0">
+                                        <i class="fa fa-check text-primary text-sm"></i>
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-medium mb-1">宏伟别墅</h4>
+                                    <p class="text-gray-600 text-sm">宏伟的大型别墅，带有开阔的草坪和精致的装饰</p>
+                                </div>
+                            </div>
+                            
+                            <!-- 房子选项4 -->
+                            <div class="house-option card-hover rounded-xl overflow-hidden shadow-md border cursor-pointer" data-id="house4">
+                                <div class="relative">
+                                    <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/9eaebd6611be4ad68230354637e38ff1~tplv-a9rns2rl98-image.image?rcl=2025092816162016DF00AA9416CB60BB44&amp;rk3s=8e244e95&amp;rrcfp=2609e108&amp;x-expires=1759652184&amp;x-signature=U%2Bdu%2FRjERHM1Eb9l0sHMbX5P55g%3D" alt="城市中的公寓楼，现代风格，多窗户" class="w-full h-48 object-cover">
+                                    <div class="absolute top-3 right-3 w-6 h-6 rounded-full bg-white border-2 border-gray-300 flex items-center justify-center selected-marker opacity-0">
+                                        <i class="fa fa-check text-primary text-sm"></i>
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-medium mb-1">城市公寓</h4>
+                                    <p class="text-gray-600 text-sm">城市中的公寓楼，现代风格，多窗户</p>
+                                </div>
+                            </div>
+                            
+                            <!-- 房子选项5 -->
+                            <div class="house-option card-hover rounded-xl overflow-hidden shadow-md border cursor-pointer" data-id="house5">
+                                <div class="relative">
+                                    <img src="https://p9-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/09966c05ee83471bbe7aa5aacdc54a80~tplv-a9rns2rl98-image.image?rcl=2025092816163987F1552878B8E5D8823A&amp;rk3s=8e244e95&amp;rrcfp=2609e108&amp;x-expires=1759652203&amp;x-signature=oCOagPtWFXiBggEh%2BckGrMaIl4E%3D" alt="山间小屋，木质结构，周围环绕自然环境" class="w-full h-48 object-cover">
+                                    <div class="absolute top-3 right-3 w-6 h-6 rounded-full bg-white border-2 border-gray-300 flex items-center justify-center selected-marker opacity-0">
+                                        <i class="fa fa-check text-primary text-sm"></i>
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-medium mb-1">山间木屋</h4>
+                                    <p class="text-gray-600 text-sm">山间小屋，木质结构，周围环绕自然环境</p>
+                                </div>
+                            </div>
+                            
+                            <!-- 房子选项6 -->
+                            <div class="house-option card-hover rounded-xl overflow-hidden shadow-md border cursor-pointer" data-id="house6">
+                                <div class="relative">
+                                    <img src="https://p9-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/02628f8220a248aeb7d249171287b7bf~tplv-a9rns2rl98-image.image?rcl=20250928161710F6E71BA6D8766E7D7438&amp;rk3s=8e244e95&amp;rrcfp=2609e108&amp;x-expires=1759652234&amp;x-signature=cPzUalfCiuy3%2BH5kHER4hkuzb4s%3D" alt="古老的石砌房屋，带有历史感和坚固的外观" class="w-full h-48 object-cover">
+                                    <div class="absolute top-3 right-3 w-6 h-6 rounded-full bg-white border-2 border-gray-300 flex items-center justify-center selected-marker opacity-0">
+                                        <i class="fa fa-check text-primary text-sm"></i>
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-medium mb-1">古老石屋</h4>
+                                    <p class="text-gray-600 text-sm">古老的石砌房屋，带有历史感和坚固的外观</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 text-center">
+                            <button id="to-step-2" class="px-6 py-3 bg-primary hover:bg-primary/90 text-white font-medium rounded-lg shadow hover:shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed" disabled="">
+                                继续选择树木 <i class="fa fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 步骤2：选择树木 -->
+                <div id="step-2" class="test-step hidden">
+                    <div class="p-6 border-b border-gray-100 bg-gray-50">
+                        <h3 class="text-xl font-semibold">第二步：选择树木</h3>
+                        <p class="text-gray-500 text-sm">请选择一个你最有感觉的树木图像</p>
+                    </div>
+                    <div class="p-6 md:p-8">
+                        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <!-- 树选项1 -->
+                            <div class="tree-option card-hover rounded-xl overflow-hidden shadow-md border cursor-pointer" data-id="tree1">
+                                <div class="relative">
+                                    <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/df563bcffa2a4e9ea33c82372d68f7cb~tplv-a9rns2rl98-image.image?rcl=20250928161848B610F7C3BC89677D8C82&amp;rk3s=8e244e95&amp;rrcfp=2609e108&amp;x-expires=1759652332&amp;x-signature=nEUpI7tuInen21NaPzmx4tfXeTA%3D" alt="茂盛的大树，枝叶繁茂，树干粗壮" class="w-full h-48 object-cover">
+                                    <div class="absolute top-3 right-3 w-6 h-6 rounded-full bg-white border-2 border-gray-300 flex items-center justify-center selected-marker opacity-0">
+                                        <i class="fa fa-check text-primary text-sm"></i>
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-medium mb-1">茂盛的大树</h4>
+                                    <p class="text-gray-600 text-sm">枝叶繁茂，树干粗壮，充满生命力</p>
+                                </div>
+                            </div>
+                            
+                            <!-- 树选项2 -->
+                            <div class="tree-option card-hover rounded-xl overflow-hidden shadow-md border cursor-pointer" data-id="tree2">
+                                <div class="relative">
+                                    <img src="https://p9-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/508422f6a6b9422a8530672db4071b84~tplv-a9rns2rl98-image.image?rcl=2025092816190321B193CE9C391A7FFA0B&amp;rk3s=8e244e95&amp;rrcfp=2609e108&amp;x-expires=1759652348&amp;x-signature=Bqt56yh7fNO4Se%2FaIkraVeiPXF4%3D" alt="冬季的枯树，没有叶子，枝干清晰可见" class="w-full h-48 object-cover">
+                                    <div class="absolute top-3 right-3 w-6 h-6 rounded-full bg-white border-2 border-gray-300 flex items-center justify-center selected-marker opacity-0">
+                                        <i class="fa fa-check text-primary text-sm"></i>
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-medium mb-1">冬季枯树</h4>
+                                    <p class="text-gray-600 text-sm">没有叶子，枝干清晰可见，简洁而有力</p>
+                                </div>
+                            </div>
+                            
+                            <!-- 树选项3 -->
+                            <div class="tree-option card-hover rounded-xl overflow-hidden shadow-md border cursor-pointer" data-id="tree3">
+                                <div class="relative">
+                                    <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/4be01a8a3f1e423db3c206af548b5f16~tplv-a9rns2rl98-image.image?rcl=20250928161921821A95D506826381FD57&amp;rk3s=8e244e95&amp;rrcfp=2609e108&amp;x-expires=1759652366&amp;x-signature=EeusYMFOywPWky56sFhlgeWAemQ%3D" alt="高大的松树，形态挺拔，四季常青" class="w-full h-48 object-cover">
+                                    <div class="absolute top-3 right-3 w-6 h-6 rounded-full bg-white border-2 border-gray-300 flex items-center justify-center selected-marker opacity-0">
+                                        <i class="fa fa-check text-primary text-sm"></i>
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-medium mb-1">挺拔松树</h4>
+                                    <p class="text-gray-600 text-sm">高大挺拔，四季常青，象征坚韧不拔</p>
+                                </div>
+                            </div>
+                            
+                            <!-- 树选项4 -->
+                            <div class="tree-option card-hover rounded-xl overflow-hidden shadow-md border cursor-pointer" data-id="tree4">
+                                <div class="relative">
+                                    <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/b94ceeb8ecad4b62a3fd7534c593f692~tplv-a9rns2rl98-image.image?rcl=2025092816194083F860B054D4FCC4F34D&amp;rk3s=8e244e95&amp;rrcfp=2609e108&amp;x-expires=1759652384&amp;x-signature=XAXOQVd0p%2B6b2dj7hGwBionMo%2FA%3D" alt="开花的树，树上开满粉色花朵，生机勃勃" class="w-full h-48 object-cover">
+                                    <div class="absolute top-3 right-3 w-6 h-6 rounded-full bg-white border-2 border-gray-300 flex items-center justify-center selected-marker opacity-0">
+                                        <i class="fa fa-check text-primary text-sm"></i>
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-medium mb-1">开花的树</h4>
+                                    <p class="text-gray-600 text-sm">树上开满粉色花朵，象征成长与绽放</p>
+                                </div>
+                            </div>
+                            
+                            <!-- 树选项5 -->
+                            <div class="tree-option card-hover rounded-xl overflow-hidden shadow-md border cursor-pointer" data-id="tree5">
+                                <div class="relative">
+                                    <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/05d8f5d50a244f39898688da86969a0f~tplv-a9rns2rl98-image.image?rcl=20250928161956C404A1119CB919670421&amp;rk3s=8e244e95&amp;rrcfp=2609e108&amp;x-expires=1759652400&amp;x-signature=wwrBUo55YvrOkt37vwvB%2FHDr464%3D" alt="弯曲的树，树干呈现自然弯曲形态，独特而有韧性" class="w-full h-48 object-cover">
+                                    <div class="absolute top-3 right-3 w-6 h-6 rounded-full bg-white border-2 border-gray-300 flex items-center justify-center selected-marker opacity-0">
+                                        <i class="fa fa-check text-primary text-sm"></i>
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-medium mb-1">弯曲的树</h4>
+                                    <p class="text-gray-600 text-sm">树干呈现自然弯曲形态，独特而有韧性</p>
+                                </div>
+                            </div>
+                            
+                            <!-- 树选项6 -->
+                            <div class="tree-option card-hover rounded-xl overflow-hidden shadow-md border cursor-pointer" data-id="tree6">
+                                <div class="relative">
+                                    <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/4cd73498c6054dd08f98c5df7af70b4a~tplv-a9rns2rl98-image.image?rcl=202509281620190E21A52035449F565027&amp;rk3s=8e244e95&amp;rrcfp=2609e108&amp;x-expires=1759652424&amp;x-signature=4wN%2F7Oi3R9RARAdKY6XO7pRZ6gU%3D" alt="小树，年轻而有活力，正在成长阶段" class="w-full h-48 object-cover">
+                                    <div class="absolute top-3 right-3 w-6 h-6 rounded-full bg-white border-2 border-gray-300 flex items-center justify-center selected-marker opacity-0">
+                                        <i class="fa fa-check text-primary text-sm"></i>
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-medium mb-1">成长中的小树</h4>
+                                    <p class="text-gray-600 text-sm">年轻而有活力，正在成长阶段，充满潜力</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 flex justify-between">
+                            <button id="back-to-step-1" class="px-6 py-3 bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium rounded-lg shadow hover:shadow-md transition-all">
+                                <i class="fa fa-arrow-left mr-2"></i> 返回上一步
+                            </button>
+                            <button id="to-step-3" class="px-6 py-3 bg-primary hover:bg-primary/90 text-white font-medium rounded-lg shadow hover:shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed" disabled="">
+                                继续选择人物 <i class="fa fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 步骤3：选择人物 -->
+                <div id="step-3" class="test-step hidden">
+                    <div class="p-6 border-b border-gray-100 bg-gray-50">
+                        <h3 class="text-xl font-semibold">第三步：选择人物</h3>
+                        <p class="text-gray-500 text-sm">请选择一个最能代表你感受的人物图像</p>
+                    </div>
+                    <div class="p-6 md:p-8">
+                        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <!-- 人物选项1 -->
+                            <div class="person-option card-hover rounded-xl overflow-hidden shadow-md border cursor-pointer" data-id="person1">
+                                <div class="relative">
+                                    <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/75ac778ea85a4f69831a5cb1f3bedceb~tplv-a9rns2rl98-image.image?rcl=202509281621038544E5F7ECB599C7CF19&amp;rk3s=8e244e95&amp;rrcfp=2609e108&amp;x-expires=1759652467&amp;x-signature=gXcnJ1wrQ%2BS65VJwglG%2Fx3Fxj5A%3D" alt="站立的人，双臂交叉，姿态自信" class="w-full h-48 object-cover">
+                                    <div class="absolute top-3 right-3 w-6 h-6 rounded-full bg-white border-2 border-gray-300 flex items-center justify-center selected-marker opacity-0">
+                                        <i class="fa fa-check text-primary text-sm"></i>
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-medium mb-1">自信站立的人</h4>
+                                    <p class="text-gray-600 text-sm">站立姿态，双臂交叉，展现自信与坚定</p>
+                                </div>
+                            </div>
+                            
+                            <!-- 人物选项2 -->
+                            <div class="person-option card-hover rounded-xl overflow-hidden shadow-md border cursor-pointer" data-id="person2">
+                                <div class="relative">
+                                    <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/2008c76aaa06465f9bfdb91017f545eb~tplv-a9rns2rl98-image.image?rcl=20250928162122ABD2DDC208BFF27B9F16&amp;rk3s=8e244e95&amp;rrcfp=2609e108&amp;x-expires=1759652486&amp;x-signature=%2BXjCb6%2Fd94eFZURgbnyxf2uG2EI%3D" alt="坐着的人，姿态放松，望向远方" class="w-full h-48 object-cover">
+                                    <div class="absolute top-3 right-3 w-6 h-6 rounded-full bg-white border-2 border-gray-300 flex items-center justify-center selected-marker opacity-0">
+                                        <i class="fa fa-check text-primary text-sm"></i>
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-medium mb-1">沉思的人</h4>
+                                    <p class="text-gray-600 text-sm">坐着的姿态，望向远方，显得沉思而平静</p>
+                                </div>
+                            </div>
+                            
+                            <!-- 人物选项3 -->
+                            <div class="person-option card-hover rounded-xl overflow-hidden shadow-md border cursor-pointer" data-id="person3">
+                                <div class="relative">
+                                    <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/c95761d41c2d4c3b8fe0fc6ceb985c77~tplv-a9rns2rl98-image.image?rcl=202509281621377F1F0BF1ADEE5A54BAF0&amp;rk3s=8e244e95&amp;rrcfp=2609e108&amp;x-expires=1759652501&amp;x-signature=Smz3dPDOLfig2AzAZwMbqleDaG0%3D" alt="奔跑的人，充满活力与动感" class="w-full h-48 object-cover">
+                                    <div class="absolute top-3 right-3 w-6 h-6 rounded-full bg-white border-2 border-gray-300 flex items-center justify-center selected-marker opacity-0">
+                                        <i class="fa fa-check text-primary text-sm"></i>
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-medium mb-1">奔跑的人</h4>
+                                    <p class="text-gray-600 text-sm">动态的奔跑姿态，充满活力与前进动力</p>
+                                </div>
+                            </div>
+                            
+                            <!-- 人物选项4 -->
+                            <div class="person-option card-hover rounded-xl overflow-hidden shadow-md border cursor-pointer" data-id="person4">
+                                <div class="relative">
+                                    <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/63e5f502774d41e980728e3138e374e5~tplv-a9rns2rl98-image.image?rcl=202509281621517F1F0BF1ADEE5A54C1DC&amp;rk3s=8e244e95&amp;rrcfp=2609e108&amp;x-expires=1759652516&amp;x-signature=GYy%2FB%2BTQ0fJg2Vaxyu0lixiZBoA%3D" alt="拥抱的人，展现亲密与连接" class="w-full h-48 object-cover">
+                                    <div class="absolute top-3 right-3 w-6 h-6 rounded-full bg-white border-2 border-gray-300 flex items-center justify-center selected-marker opacity-0">
+                                        <i class="fa fa-check text-primary text-sm"></i>
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-medium mb-1">拥抱的人</h4>
+                                    <p class="text-gray-600 text-sm">两人拥抱的姿态，展现亲密与人际连接</p>
+                                </div>
+                            </div>
+                            
+                            <!-- 人物选项5 -->
+                            <div class="person-option card-hover rounded-xl overflow-hidden shadow-md border cursor-pointer" data-id="person5">
+                                <div class="relative">
+                                    <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/494ef46d3d1d48118b121b4a8eaeb3b8~tplv-a9rns2rl98-image.image?rcl=20250928162210CE4E5E3E37546C7F7CB9&amp;rk3s=8e244e95&amp;rrcfp=2609e108&amp;x-expires=1759652535&amp;x-signature=Bn7YsOK6suN0AWgsyJ0VsqwXjTk%3D" alt="独自站立的人，望向远方，显得独立而深思" class="w-full h-48 object-cover">
+                                    <div class="absolute top-3 right-3 w-6 h-6 rounded-full bg-white border-2 border-gray-300 flex items-center justify-center selected-marker opacity-0">
+                                        <i class="fa fa-check text-primary text-sm"></i>
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-medium mb-1">独立的人</h4>
+                                    <p class="text-gray-600 text-sm">独自站立，望向远方，显得独立而深思</p>
+                                </div>
+                            </div>
+                            
+                            <!-- 人物选项6 -->
+                            <div class="person-option card-hover rounded-xl overflow-hidden shadow-md border cursor-pointer" data-id="person6">
+                                <div class="relative">
+                                    <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/576abbd9e8b84702890c5c0bb54bd7ba~tplv-a9rns2rl98-image.image?rcl=20250928162233E9497006CC9FF057C908&amp;rk3s=8e244e95&amp;rrcfp=2609e108&amp;x-expires=1759652557&amp;x-signature=%2BZVUxAwflQEpobKXttU24hIQiBw%3D" alt="工作中的人，专注而认真" class="w-full h-48 object-cover">
+                                    <div class="absolute top-3 right-3 w-6 h-6 rounded-full bg-white border-2 border-gray-300 flex items-center justify-center selected-marker opacity-0">
+                                        <i class="fa fa-check text-primary text-sm"></i>
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <h4 class="font-medium mb-1">专注工作的人</h4>
+                                    <p class="text-gray-600 text-sm">专注于工作的姿态，展现认真与投入</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 flex justify-between">
+                            <button id="back-to-step-2" class="px-6 py-3 bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium rounded-lg shadow hover:shadow-md transition-all">
+                                <i class="fa fa-arrow-left mr-2"></i> 返回上一步
+                            </button>
+                            <button id="show-analysis" class="px-6 py-3 bg-accent hover:bg-accent/90 text-white font-medium rounded-lg shadow hover:shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed" disabled="">
+                                获取分析结果 <i class="fa fa-lightbulb-o ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 分析结果区域 -->
+    <section id="analysis" class="py-16 bg-white hidden">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-4">你的房树人分析结果</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto mb-6">
+                    以下分析基于你选择的房、树、人图像特征，提供心理状态的参考解读。
+                </p>
+                <div class="w-20 h-1 bg-primary mx-auto rounded-full"></div>
+            </div>
+
+            <div class="bg-neutral rounded-2xl p-6 md:p-8 mb-8">
+                <div class="flex items-center mb-6">
+                    <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-3">
+                        <i class="fa fa-info text-primary"></i>
+                    </div>
+                    <p class="text-gray-600">
+                        <strong>注意：</strong> 本分析仅供参考，不能替代专业心理诊断。如有需要，请咨询专业心理医生。
+                    </p>
+                </div>
+            </div>
+
+            <!-- 选择回顾 -->
+            <div class="mb-12">
+                <h3 class="text-xl font-semibold mb-6 text-center">你的选择</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div id="selected-house-preview" class="bg-white rounded-xl shadow-md overflow-hidden">
+                        <div class="h-48 bg-gray-100 flex items-center justify-center">
+                            <img src="" alt="你选择的房子" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-4 text-center">
+                            <h4 class="font-medium text-primary">你选择的房子</h4>
+                        </div>
+                    </div>
+                    <div id="selected-tree-preview" class="bg-white rounded-xl shadow-md overflow-hidden">
+                        <div class="h-48 bg-gray-100 flex items-center justify-center">
+                            <img src="" alt="你选择的树" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-4 text-center">
+                            <h4 class="font-medium text-secondary">你选择的树</h4>
+                        </div>
+                    </div>
+                    <div id="selected-person-preview" class="bg-white rounded-xl shadow-md overflow-hidden">
+                        <div class="h-48 bg-gray-100 flex items-center justify-center">
+                            <img src="" alt="你选择的人" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-4 text-center">
+                            <h4 class="font-medium text-accent">你选择的人</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 mb-10">
+                <!-- 房子分析 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                    <div class="bg-primary/10 p-5">
+                        <h3 class="text-xl font-semibold flex items-center">
+                            <i class="fa fa-home text-primary mr-2"></i> 房子分析
+                        </h3>
+                    </div>
+                    <div class="p-5">
+                        <div id="house-analysis" class="text-gray-600">
+                            <!-- 分析内容将通过JS填充 -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 树分析 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                    <div class="bg-secondary/10 p-5">
+                        <h3 class="text-xl font-semibold flex items-center">
+                            <i class="fa fa-tree text-secondary mr-2"></i> 树分析
+                        </h3>
+                    </div>
+                    <div class="p-5">
+                        <div id="tree-analysis" class="text-gray-600">
+                            <!-- 分析内容将通过JS填充 -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 人分析 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                    <div class="bg-accent/10 p-5">
+                        <h3 class="text-xl font-semibold flex items-center">
+                            <i class="fa fa-user text-accent mr-2"></i> 人分析
+                        </h3>
+                    </div>
+                    <div class="p-5">
+                        <div id="person-analysis" class="text-gray-600">
+                            <!-- 分析内容将通过JS填充 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 综合分析 -->
+            <div class="bg-white rounded-xl shadow-md p-6 md:p-8">
+                <h3 class="text-xl font-semibold mb-5 flex items-center">
+                    <i class="fa fa-line-chart text-dark mr-2"></i> 综合分析
+                </h3>
+                <div id="comprehensive-analysis" class="text-gray-600">
+                    <!-- 综合分析内容将通过JS填充 -->
+                </div>
+            </div>
+
+            <div class="mt-10 text-center">
+                <button id="restart-test" class="inline-flex items-center space-x-2 px-6 py-3 bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium rounded-lg transition-colors">
+                    <i class="fa fa-refresh"></i>
+                    <span>重新测试</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 常见问题 -->
+    <section id="faq" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-4">常见问题</h2>
+                <div class="w-20 h-1 bg-primary mx-auto rounded-full"></div>
+            </div>
+
+            <div class="max-w-3xl mx-auto">
+                <div class="space-y-4">
+                    <!-- FAQ 项 -->
+                    <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                        <button class="faq-toggle w-full text-left px-6 py-4 flex justify-between items-center focus:outline-none">
+                            <span class="font-medium text-gray-800">为什么选择图片也能反映我的内心？</span>
+                            <i class="fa fa-chevron-down text-gray-400 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-4">
+                            <p class="text-gray-600">
+                                当我们在没有刻意思考的情况下选择图像时，我们的潜意识会引导我们选择那些与我们内心状态、情感需求或人格特质相契合的图像。这种选择过程绕过了我们的意识防御机制，揭示出更深层的心理特征。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                        <button class="faq-toggle w-full text-left px-6 py-4 flex justify-between items-center focus:outline-none">
+                            <span class="font-medium text-gray-800">如果我对多个选项都有感觉怎么办？</span>
+                            <i class="fa fa-chevron-down text-gray-400 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-4">
+                            <p class="text-gray-600">
+                                这种情况很常见，说明你可能具有多种心理特质或处于复杂的情感状态。此时，建议你选择第一个引起你注意的图像，或者选择让你感觉最强烈的那个选项，直觉往往能引导你做出最准确的选择。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                        <button class="faq-toggle w-full text-left px-6 py-4 flex justify-between items-center focus:outline-none">
+                            <span class="font-medium text-gray-800">测试结果的准确性如何？</span>
+                            <i class="fa fa-chevron-down text-gray-400 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-4">
+                            <p class="text-gray-600">
+                                房树人测试作为一种投射测验，其结果的解读具有主观性，准确性取决于多种因素。它不能提供绝对的心理诊断，但可以作为了解个人情感、认知模式和人际关系的参考工具。对于重要的心理决策，建议咨询专业心理医生。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                        <button class="faq-toggle w-full text-left px-6 py-4 flex justify-between items-center focus:outline-none">
+                            <span class="font-medium text-gray-800">我可以多次进行测试吗？结果会不同吗？</span>
+                            <i class="fa fa-chevron-down text-gray-400 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-4">
+                            <p class="text-gray-600">
+                                可以多次测试。人的心理状态是动态变化的，不同时期的选择可能反映不同的心理状态和关注点。多次测试的结果对比，可以帮助你了解自己的心理变化过程。但建议不要过于频繁地进行测试，间隔一段时间会获得更有意义的对比。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fa fa-picture-o text-primary text-2xl"></i>
+                        <span class="text-xl font-bold">房树人测试</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        探索内心世界的窗口，通过图像选择了解真实的自己。
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-weibo text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-wechat text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-qq text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">快速链接</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#intro" class="text-gray-400 hover:text-white transition-colors">测试介绍</a></li>
+                        <li><a href="#test" class="text-gray-400 hover:text-white transition-colors">开始测试</a></li>
+                        <li><a href="#faq" class="text-gray-400 hover:text-white transition-colors">常见问题</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">免责声明</h4>
+                    <p class="text-gray-400">
+                        本网站提供的测试和分析仅供参考，不能替代专业心理诊断。如有心理困扰，请咨询专业心理医生或心理咨询师。
+                    </p>
+                </div>
+            </div>
+
+            <hr class="border-gray-800 mb-6">
+
+            <div class="text-center text-gray-500 text-sm">
+                <p>© 2023 房树人测试. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 回到顶部按钮 -->
+    <button id="backToTop" class="fixed bottom-6 right-6 w-12 h-12 bg-primary text-white rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:bg-primary/90">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // 存储用户选择
+        const userSelections = {
+            house: null,
+            tree: null,
+            person: null
+        };
+
+        // 分析数据
+        const analysisData = {
+            // 房子分析
+            house1: "你选择了现代舒适的住宅，这表明你重视家庭生活的舒适度和现代感。你可能是一个思想开放、喜欢新鲜事物的人，同时也注重生活品质和个人空间。这种选择反映了你对家庭的重视和对稳定生活的向往。",
+            house2: "传统温馨的小屋反映了你对简单、温暖家庭生活的向往。你可能是一个重视传统价值观、情感丰富的人，家庭对你来说是安全感的重要来源。你可能更喜欢宁静、舒适的生活环境，而不是喧嚣的都市生活。",
+            house3: "选择宏伟别墅表明你有较高的抱负和成就动机，追求卓越和成功。你可能重视社会地位和他人的认可，同时也具备较强的责任感和领导力。这种选择也反映了你对未来的信心和对美好生活的追求。",
+            house4: "城市公寓的选择反映了你适应现代都市生活的能力，以及对便利、高效生活方式的偏好。你可能是一个社交活跃、喜欢与人交往的人，同时也具备较强的适应能力和独立性。你可能重视个人事业发展和城市资源的利用。",
+            house5: "山间木屋反映了你对自然和宁静的向往，可能暗示你渴望远离喧嚣、寻找内心平静的状态。你可能是一个独立、内敛的人，重视个人空间和内心世界的探索。这种选择也可能表明你目前需要一些独处和反思的时间。",
+            house6: "古老石屋的选择表明你重视传统、历史和稳定性。你可能是一个稳重、可靠的人，重视安全感和持久性。这种选择也反映了你对生活根基的重视，以及对经历和智慧积累的欣赏。",
+            
+            // 树分析
+            tree1: "茂盛的大树反映了你当前充满活力、生命力旺盛的状态。你可能拥有良好的健康状况和积极的心态，能够应对生活中的挑战。这种选择也表明你有坚实的基础和广泛的支持系统，如同大树的根系和枝叶一样。",
+            tree2: "冬季枯树的选择并不一定代表消极，它可能反映了你目前处于一个休整、反思的阶段。你可能正在经历生活的转变期，暂时收敛能量，为未来的成长做准备。这种选择也表明你具备面对困难的勇气和坚韧的性格。",
+            tree3: "挺拔的松树象征着你的坚韧不拔和持久耐力。你可能是一个有原则、有毅力的人，能够在逆境中保持坚定。这种选择反映了你对稳定和可靠的追求，以及面对困难时的冷静和理智。",
+            tree4: "开花的树反映了你当前处于成长、绽放的阶段，可能在个人发展、人际关系或创造力方面有新的突破。你可能心情愉悦，对未来充满希望。这种选择也表明你重视美和情感体验，具备丰富的内心世界。",
+            tree5: "弯曲的树反映了你灵活、适应力强的性格。你可能经历过一些人生的曲折，但学会了在变化中保持韧性。这种选择表明你能够接受生活的不完美，并从中找到平衡和美感。你可能是一个包容、开放的人。",
+            tree6: "成长中的小树象征着你正处于发展和成长的阶段，充满潜力和可能性。你可能在学习新技能、发展新关系或建立新目标。这种选择反映了你对未来的期待和积极进取的态度，以及对个人成长的重视。",
+            
+            // 人物分析
+            person1: "自信站立的人反映了你对自己能力的肯定和坚定的自我信念。你可能是一个目标明确、勇于表达自己观点的人。这种选择表明你具备较强的自尊心和独立思考能力，在社交场合中通常表现得从容自信。",
+            person2: "沉思的人反映了你内省、深思熟虑的性格特点。你可能是一个喜欢思考、重视内心世界的人，善于从生活中汲取经验和智慧。这种选择表明你不急于做出决定，而是倾向于在充分思考后采取行动，具备较强的洞察力。",
+            tree3: "奔跑的人反映了你积极进取、充满活力的生活态度。你可能是一个目标导向、行动力强的人，勇于追求自己的梦想。这种选择表明你不满足于现状，渴望成长和进步，具备较强的动力和决心。",
+            person4: "拥抱的人反映了你重视人际关系、情感连接的性格特点。你可能是一个友善、富有同情心的人，善于建立和维护亲密关系。这种选择表明你重视爱与被爱，具备良好的社交能力和情感表达能力。",
+            person5: "独立的人反映了你自主、自我依靠的性格。你可能是一个习惯独立思考和行动的人，重视个人自由和空间。这种选择表明你具备较强的自我意识和独立解决问题的能力，同时也可能暗示你需要一些独处的时间来充电。",
+            person6: "专注工作的人反映了你对目标的投入和责任感。你可能是一个认真、敬业的人，重视成就感和自我实现。这种选择表明你具备较强的专注力和执行力，能够为了达成目标而付出努力，同时也可能反映你当前对事业或个人项目的重视。"
+        };
+
+        // 综合分析生成函数
+        function generateComprehensiveAnalysis(houseId, treeId, personId) {
+            // 这里可以根据组合生成更个性化的分析
+            // 简化版本：基于选择类型组合通用分析
+            return `综合你选择的房子、树和人物图像，我们可以看出你是一个${houseId.includes('2') || houseId.includes('6') ? '重视传统和稳定的' : 
+                houseId.includes('1') || houseId.includes('4') ? '适应力强、开放的' : '有抱负、追求卓越的'}人。你的生命力状态${treeId.includes('1') || treeId.includes('4') ? '旺盛，处于成长和绽放期' : 
+                treeId.includes('2') ? '处于休整和反思阶段' : '坚韧而稳定，具备持久力'}。在人际关系方面，你${personId.includes('4') ? '重视情感连接和人际互动' : 
+                personId.includes('5') ? '倾向于独立和自主' : '表现出自信和坚定的态度'}。整体而言，你的选择反映了一个${Math.random() > 0.5 ? '平衡发展、积极面对生活的' : '深思熟虑、有明确方向的'}人格特质。`;
+        }
+
+        // DOM 元素
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navbar = document.getElementById('navbar');
+        const backToTop = document.getElementById('backToTop');
+        const faqToggles = document.querySelectorAll('.faq-toggle');
+        
+        // 测试步骤元素
+        const step1 = document.getElementById('step-1');
+        const step2 = document.getElementById('step-2');
+        const step3 = document.getElementById('step-3');
+        const toStep2Btn = document.getElementById('to-step-2');
+        const backToStep1Btn = document.getElementById('back-to-step-1');
+        const toStep3Btn = document.getElementById('to-step-3');
+        const backToStep2Btn = document.getElementById('back-to-step-2');
+        const showAnalysisBtn = document.getElementById('show-analysis');
+        const restartTestBtn = document.getElementById('restart-test');
+        
+        // 进度指示器
+        const progress1 = document.getElementById('progress-1');
+        const progress2 = document.getElementById('progress-2');
+        const stepIndicator1 = document.getElementById('step-indicator-1');
+        const stepIndicator2 = document.getElementById('step-indicator-2');
+        const stepIndicator3 = document.getElementById('step-indicator-3');
+        
+        // 分析区域
+        const analysisSection = document.getElementById('analysis');
+        const testSection = document.getElementById('test');
+        const houseAnalysis = document.getElementById('house-analysis');
+        const treeAnalysis = document.getElementById('tree-analysis');
+        const personAnalysis = document.getElementById('person-analysis');
+        const comprehensiveAnalysis = document.getElementById('comprehensive-analysis');
+        
+        // 选择预览
+        const selectedHousePreview = document.getElementById('selected-house-preview').querySelector('img');
+        const selectedTreePreview = document.getElementById('selected-tree-preview').querySelector('img');
+        const selectedPersonPreview = document.getElementById('selected-person-preview').querySelector('img');
+
+        // 导航栏滚动效果
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('py-2', 'shadow');
+                navbar.classList.remove('py-3');
+                backToTop.classList.remove('opacity-0', 'invisible');
+                backToTop.classList.add('opacity-100', 'visible');
+            } else {
+                navbar.classList.add('py-3');
+                navbar.classList.remove('py-2', 'shadow');
+                backToTop.classList.add('opacity-0', 'invisible');
+                backToTop.classList.remove('opacity-100', 'visible');
+            }
+        });
+
+        // 移动端菜单切换
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // 关闭移动菜单
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // 回到顶部
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // FAQ 折叠效果
+        faqToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const content = toggle.nextElementSibling;
+                const icon = toggle.querySelector('i');
+                
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+
+        // 房子选择
+        document.querySelectorAll('.house-option').forEach(option => {
+            option.addEventListener('click', () => {
+                // 移除其他选项的选中状态
+                document.querySelectorAll('.house-option').forEach(opt => {
+                    opt.classList.remove('selected-border');
+                    opt.querySelector('.selected-marker').classList.add('opacity-0');
+                });
+                
+                // 设置当前选项为选中状态
+                option.classList.add('selected-border');
+                option.querySelector('.selected-marker').classList.remove('opacity-0');
+                
+                // 保存选择
+                userSelections.house = option.getAttribute('data-id');
+                
+                // 启用下一步按钮
+                toStep2Btn.disabled = false;
+            });
+        });
+
+        // 树选择
+        document.querySelectorAll('.tree-option').forEach(option => {
+            option.addEventListener('click', () => {
+                // 移除其他选项的选中状态
+                document.querySelectorAll('.tree-option').forEach(opt => {
+                    opt.classList.remove('selected-border');
+                    opt.querySelector('.selected-marker').classList.add('opacity-0');
+                });
+                
+                // 设置当前选项为选中状态
+                option.classList.add('selected-border');
+                option.querySelector('.selected-marker').classList.remove('opacity-0');
+                
+                // 保存选择
+                userSelections.tree = option.getAttribute('data-id');
+                
+                // 启用下一步按钮
+                toStep3Btn.disabled = false;
+            });
+        });
+
+        // 人物选择
+        document.querySelectorAll('.person-option').forEach(option => {
+            option.addEventListener('click', () => {
+                // 移除其他选项的选中状态
+                document.querySelectorAll('.person-option').forEach(opt => {
+                    opt.classList.remove('selected-border');
+                    opt.querySelector('.selected-marker').classList.add('opacity-0');
+                });
+                
+                // 设置当前选项为选中状态
+                option.classList.add('selected-border');
+                option.querySelector('.selected-marker').classList.remove('opacity-0');
+                
+                // 保存选择
+                userSelections.person = option.getAttribute('data-id');
+                
+                // 启用分析按钮
+                showAnalysisBtn.disabled = false;
+            });
+        });
+
+        // 步骤导航
+        toStep2Btn.addEventListener('click', () => {
+            step1.classList.add('hidden');
+            step2.classList.remove('hidden');
+            
+            // 更新进度指示器
+            progress1.style.width = '100%';
+            stepIndicator2.querySelector('div').classList.remove('bg-gray-200', 'text-gray-500');
+            stepIndicator2.querySelector('div').classList.add('bg-primary', 'text-white');
+            stepIndicator2.querySelector('span').classList.remove('text-gray-500');
+            stepIndicator2.querySelector('span').classList.add('text-primary');
+            
+            // 滚动到顶部
+            window.scrollTo({
+                top: testSection.offsetTop - 100,
+                behavior: 'smooth'
+            });
+        });
+
+        backToStep1Btn.addEventListener('click', () => {
+            step2.classList.add('hidden');
+            step1.classList.remove('hidden');
+            
+            // 更新进度指示器
+            progress1.style.width = '0%';
+            stepIndicator2.querySelector('div').classList.add('bg-gray-200', 'text-gray-500');
+            stepIndicator2.querySelector('div').classList.remove('bg-primary', 'text-white');
+            stepIndicator2.querySelector('span').classList.add('text-gray-500');
+            stepIndicator2.querySelector('span').classList.remove('text-primary');
+        });
+
+        toStep3Btn.addEventListener('click', () => {
+            step2.classList.add('hidden');
+            step3.classList.remove('hidden');
+            
+            // 更新进度指示器
+            progress2.style.width = '100%';
+            stepIndicator3.querySelector('div').classList.remove('bg-gray-200', 'text-gray-500');
+            stepIndicator3.querySelector('div').classList.add('bg-primary', 'text-white');
+            stepIndicator3.querySelector('span').classList.remove('text-gray-500');
+            stepIndicator3.querySelector('span').classList.add('text-primary');
+            
+            // 滚动到顶部
+            window.scrollTo({
+                top: testSection.offsetTop - 100,
+                behavior: 'smooth'
+            });
+        });
+
+        backToStep2Btn.addEventListener('click', () => {
+            step3.classList.add('hidden');
+            step2.classList.remove('hidden');
+            
+            // 更新进度指示器
+            progress2.style.width = '0%';
+            stepIndicator3.querySelector('div').classList.add('bg-gray-200', 'text-gray-500');
+            stepIndicator3.querySelector('div').classList.remove('bg-primary', 'text-white');
+            stepIndicator3.querySelector('span').classList.add('text-gray-500');
+            stepIndicator3.querySelector('span').classList.remove('text-primary');
+        });
+
+        // 显示分析结果
+        showAnalysisBtn.addEventListener('click', () => {
+            // 填充分析内容
+            houseAnalysis.textContent = analysisData[userSelections.house];
+            treeAnalysis.textContent = analysisData[userSelections.tree];
+            personAnalysis.textContent = analysisData[userSelections.person];
+            comprehensiveAnalysis.textContent = generateComprehensiveAnalysis(
+                userSelections.house, 
+                userSelections.tree, 
+                userSelections.person
+            );
+            
+            // 设置选择预览图片
+            const selectedHouse = document.querySelector(`.house-option[data-id="${userSelections.house}"] img`);
+            const selectedTree = document.querySelector(`.tree-option[data-id="${userSelections.tree}"] img`);
+            const selectedPerson = document.querySelector(`.person-option[data-id="${userSelections.person}"] img`);
+            
+            selectedHousePreview.src = selectedHouse.src;
+            selectedHousePreview.alt = selectedHouse.alt;
+            selectedTreePreview.src = selectedTree.src;
+            selectedTreePreview.alt = selectedTree.alt;
+            selectedPersonPreview.src = selectedPerson.src;
+            selectedPersonPreview.alt = selectedPerson.alt;
+            
+            // 显示分析区域
+            testSection.classList.add('hidden');
+            analysisSection.classList.remove('hidden');
+            
+            // 滚动到分析区域
+            window.scrollTo({
+                top: analysisSection.offsetTop - 100,
+                behavior: 'smooth'
+            });
+        });
+
+        // 重新测试
+        restartTestBtn.addEventListener('click', () => {
+            // 重置选择
+            userSelections.house = null;
+            userSelections.tree = null;
+            userSelections.person = null;
+            
+            // 重置UI状态
+            document.querySelectorAll('.house-option, .tree-option, .person-option').forEach(option => {
+                option.classList.remove('selected-border');
+                option.querySelector('.selected-marker').classList.add('opacity-0');
+            });
+            
+            // 重置按钮状态
+            toStep2Btn.disabled = true;
+            toStep3Btn.disabled = true;
+            showAnalysisBtn.disabled = true;
+            
+            // 重置步骤
+            step3.classList.add('hidden');
+            step2.classList.add('hidden');
+            step1.classList.remove('hidden');
+            
+            // 重置进度指示器
+            progress1.style.width = '0%';
+            progress2.style.width = '0%';
+            
+            stepIndicator2.querySelector('div').classList.add('bg-gray-200', 'text-gray-500');
+            stepIndicator2.querySelector('div').classList.remove('bg-primary', 'text-white');
+            stepIndicator2.querySelector('span').classList.add('text-gray-500');
+            stepIndicator2.querySelector('span').classList.remove('text-primary');
+            
+            stepIndicator3.querySelector('div').classList.add('bg-gray-200', 'text-gray-500');
+            stepIndicator3.querySelector('div').classList.remove('bg-primary', 'text-white');
+            stepIndicator3.querySelector('span').classList.add('text-gray-500');
+            stepIndicator3.querySelector('span').classList.remove('text-primary');
+            
+            // 显示测试区域，隐藏分析区域
+            analysisSection.classList.add('hidden');
+            testSection.classList.remove('hidden');
+            
+            // 滚动到测试区域
+            window.scrollTo({
+                top: testSection.offsetTop - 100,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+
+
+</body></html>
