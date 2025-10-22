@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>心理放松小游戏合集</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>心理放松小游戏合集</h1>
+        <p>选择一个小游戏，放松心情，缓解压力</p>
+    </header>
+    
+    <main>
+        <section class="game-grid">
+            <div class="game-card" onclick="startGame('breathing')">
+                <h3>呼吸练习</h3>
+                <p>跟随节奏深呼吸，放松身心</p>
+            </div>
+            
+            <div class="game-card" onclick="startGame('coloring')">
+                <h3>填色游戏</h3>
+                <p>自由绘画，释放创造力</p>
+            </div>
+            
+            <div class="game-card" onclick="startGame('mindfulness')">
+                <h3>正念练习</h3>
+                <p>专注当下，缓解焦虑</p>
+            </div>
+            
+            <div class="game-card" onclick="startGame('relaxingSound')">
+                <h3>放松音效</h3>
+                <p>聆听自然声音，舒缓情绪</p>
+            </div>
+        </section>
+        
+        <section id="game-container" class="hidden">
+            <button id="back-btn" onclick="backToMenu()">返回菜单</button>
+            <div id="game-content"></div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>© 2023 心理放松小游戏合集 | 用于心理健康与放松</p>
+    </footer>
+    
+    <script src="app.js"></script>
+    <script src="games.js"></script>
+</body>
+</html>
